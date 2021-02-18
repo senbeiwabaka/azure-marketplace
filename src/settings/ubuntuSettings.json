@@ -5,7 +5,7 @@
     "_artifactsLocation": {
       "type": "string",
       "metadata": {
-          "description": "The base URI where artifacts required by this template are located including a trailing '/'"
+        "description": "The base URI where artifacts required by this template are located including a trailing '/'"
       }
     },
     "_artifactsLocationSasToken": {
@@ -16,22 +16,22 @@
       "defaultValue": ""
     },
     "esSettings": {
-        "type": "object",
-        "metadata": {
-            "description" : "The Elasticsearch settings"
-        }
+      "type": "object",
+      "metadata": {
+        "description": "The Elasticsearch settings"
+      }
     },
     "commonVmSettings": {
-        "type": "object",
-        "metadata": {
-            "description" : "Shared VM settings"
-        }
+      "type": "object",
+      "metadata": {
+        "description": "Shared VM settings"
+      }
     },
     "topologySettings": {
-        "type": "object",
-        "metadata": {
-            "description": "Aggregate for topology variable"
-        }
+      "type": "object",
+      "metadata": {
+        "description": "Aggregate for topology variable"
+      }
     },
     "networkSettings": {
       "type": "object",
@@ -42,13 +42,13 @@
     "azureCloudStorageAccount": {
       "type": "secureObject",
       "metadata": {
-          "description": "The storage settings for the Azure Cloud plugin"
+        "description": "The storage settings for the Azure Cloud plugin"
       }
     },
     "kibanaIp": {
       "type": "string",
       "metadata": {
-          "description": "The public IP address for Kibana"
+        "description": "The public IP address for Kibana"
       }
     },
     "sharedStorageAccount": {
@@ -68,6 +68,7 @@
     },
     "privateIpAddresses": {
       "type": "array",
+      "defaultValue": [],
       "metadata": {
         "decription": "The vm(s) private IP addresses"
       }
@@ -191,7 +192,7 @@
       "name": "elasticsearch-nodes",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2019-05-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {

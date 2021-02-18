@@ -38,6 +38,7 @@
     },
     "privateIpAddresses": {
       "type": "array",
+      "defaultValue": [],
       "metadata": {
         "decription": "The vm(s) private IP addresses"
       }
