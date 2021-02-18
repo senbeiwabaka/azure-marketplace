@@ -108,8 +108,7 @@
         {
           "name": "ipconfig1",
           "properties": {
-            "privateIPAllocationMethod": "Static",
-            "privateIPAddress": "[parameters('privateIpAddress')]",
+            "privateIPAllocationMethod": "Dynamic",
             "subnet": {
               "id": "[parameters('vm').shared.subnetId]"
             },
