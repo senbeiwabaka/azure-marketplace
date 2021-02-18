@@ -58,6 +58,13 @@
       "metadata": {
         "description": "Unique identifiers to allow the Azure Infrastructure to understand the origin of resources deployed to Azure. You do not need to supply a value for this."
       }
+    },
+    "staticIpAddress": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "decription": "The vm static IP address"
+      }
     }
   },
   "variables": {
@@ -83,7 +90,7 @@
               "keyData": "[parameters('credentials').sshPublicKey]"
             }
           ]
-      }
+        }
       }
     },
     "osProfile": "[variables(concat(parameters('credentials').authenticationType, '_osProfile'))]"
@@ -148,7 +155,8 @@
           {
             "name": "ipconfig1",
             "properties": {
-              "privateIPAllocationMethod": "Dynamic",
+              "privateIPAllocationMethod": "Static",
+              "privateIPAddress": "[parameters('staticIpAddress')]",
               "publicIPAddress": {
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIpName'))]"
               },

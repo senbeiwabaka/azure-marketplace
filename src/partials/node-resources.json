@@ -54,6 +54,13 @@
       "metadata": {
         "decription": "The vm(s) static IP addresses"
       }
+    },
+    "kibanaStaticIpAddress": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "decription": "The Kibana vm static IP address"
+      }
     }
   },
   "variables": {
@@ -407,6 +414,9 @@
           },
           "elasticTags": {
             "value": "[parameters('elasticTags')]"
+          },
+          "staticIpAddress": {
+            "value": "[parameters('kibanaStaticIpAddress')]"
           }
         }
       }
