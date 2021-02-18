@@ -1299,17 +1299,14 @@
     },
     "staticIpAddresses": {
       "type": "array",
-      "defaultValue": [
-        "10.101.1.6",
-        "10.101.1.5"
-      ],
+      "defaultValue": [],
       "metadata": {
         "decription": "The vm(s) static IP addresses"
       }
     },
     "kibanaStaticIpAddress": {
       "type": "string",
-      "defaultValue": "10.101.1.7",
+      "defaultValue": "",
       "metadata": {
         "decription": "The Kibana vm static IP address"
       }
