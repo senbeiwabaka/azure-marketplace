@@ -42,7 +42,7 @@
       "type": "string",
       "defaultValue": "",
       "metadata": {
-        "decription": "The vm private IP address"
+        "decription": "The vm static IP address"
       }
     }
   },

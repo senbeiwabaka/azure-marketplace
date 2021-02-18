@@ -1304,7 +1304,7 @@
         "10.101.1.5"
       ],
       "metadata": {
-        "decription": "The vm(s) private IP addresses"
+        "decription": "The vm(s) static IP addresses"
       }
     }
   },

@@ -70,7 +70,7 @@
       "type": "array",
       "defaultValue": [],
       "metadata": {
-        "decription": "The vm(s) private IP addresses"
+        "decription": "The vm(s) static IP addresses"
       }
     }
   },
@@ -220,6 +220,9 @@
           },
           "elasticTags": {
             "value": "[parameters('elasticTags')]"
+          },
+          "staticIpAddresses": {
+            "value": "[parameters('staticIpAddresses')]"
           }
         }
       }
