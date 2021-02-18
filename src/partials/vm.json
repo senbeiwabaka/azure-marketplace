@@ -37,6 +37,13 @@
       "metadata": {
         "description": "Unique identifiers to allow the Azure Infrastructure to understand the origin of resources deployed to Azure. You do not need to supply a value for this."
       }
+    },
+    "privateIpAddress": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "decription": "The vm private IP address"
+      }
     }
   },
   "variables": {
@@ -101,7 +108,8 @@
         {
           "name": "ipconfig1",
           "properties": {
-            "privateIPAllocationMethod": "Dynamic",
+            "privateIPAllocationMethod": "Static",
+            "privateIPAddress": "[parameters('privateIpAddress')]",
             "subnet": {
               "id": "[parameters('vm').shared.subnetId]"
             },

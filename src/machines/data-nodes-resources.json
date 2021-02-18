@@ -11,7 +11,7 @@
     "_artifactsLocationSasToken": {
       "type": "securestring",
       "metadata": {
-          "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated. Use the defaultValue if the staging location is not secured."
+        "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated. Use the defaultValue if the staging location is not secured."
       },
       "defaultValue": ""
     },
@@ -34,6 +34,12 @@
       },
       "metadata": {
         "description": "Unique identifiers to allow the Azure Infrastructure to understand the origin of resources deployed to Azure. You do not need to supply a value for this."
+      }
+    },
+    "privateIpAddresses": {
+      "type": "array",
+      "metadata": {
+        "decription": "The vm(s) private IP addresses"
       }
     }
   },
@@ -113,6 +119,9 @@
           },
           "elasticTags": {
             "value": "[parameters('elasticTags')]"
+          },
+          "privateIpAddress": {
+            "value": "[parameters('privateIpAddresses')[copyIndex()]]"
           }
         }
       }

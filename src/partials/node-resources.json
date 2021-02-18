@@ -47,6 +47,12 @@
       "metadata": {
         "description": "Unique identifiers to allow the Azure Infrastructure to understand the origin of resources deployed to Azure. You do not need to supply a value for this."
       }
+    },
+    "privateIpAddresses": {
+      "type": "array",
+      "metadata": {
+        "decription": "The vm(s) private IP addresses"
+      }
     }
   },
   "variables": {
@@ -280,7 +286,8 @@
           },
           "elasticTags": {
             "value": "[parameters('elasticTags')]"
-          }
+          },
+          "privateIpAddresses": "[parameters('privateIpAddresses')]"
         }
       }
     },
