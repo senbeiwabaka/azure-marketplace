@@ -220,9 +220,6 @@
           },
           "elasticTags": {
             "value": "[parameters('elasticTags')]"
-          },
-          "privateIpAddresses": {
-            "value": "[parameters('privateIpAddresses')]"
           }
         }
       }

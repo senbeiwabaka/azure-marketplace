@@ -287,8 +287,7 @@
           },
           "elasticTags": {
             "value": "[parameters('elasticTags')]"
-          },
-          "privateIpAddresses": "[parameters('privateIpAddresses')]"
+          }
         }
       }
     },

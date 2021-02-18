@@ -120,9 +120,6 @@
           },
           "elasticTags": {
             "value": "[parameters('elasticTags')]"
-          },
-          "privateIpAddress": {
-            "value": "[parameters('privateIpAddresses')[copyIndex()]]"
           }
         }
       }
