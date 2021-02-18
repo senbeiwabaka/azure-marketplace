@@ -121,7 +121,7 @@
           "elasticTags": {
             "value": "[parameters('elasticTags')]"
           },
-          "staticIpAddresses": {
+          "staticIpAddress": {
             "value": "[parameters('staticIpAddresses')[copyIndex()]]"
           }
         }
