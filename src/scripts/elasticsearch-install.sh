@@ -1020,8 +1020,8 @@ configure_elasticsearch_yaml()
         for LINE in $(echo -e "$YAML_CONFIGURATION"); do
           if [[ -n "$LINE" ]]; then
               if [[ $LINE =~ $SKIP_REGEX ]]; then
-                  log "[configure_kibana_yaml] Adding line '$LINE' to $KIBANA_CONF"
-                  echo "$LINE" >> $KIBANA_CONF
+                  log "[configure_elasticsearch_yaml] Adding line '$LINE' to $ES_CONF"
+                  echo "$LINE" >> $ES_CONF
               fi
           fi
         done
