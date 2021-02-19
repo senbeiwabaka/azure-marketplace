@@ -1228,6 +1228,7 @@ configure_os_properties()
 
 install_apt_package()
 {
+  apt-get update
   local PACKAGE=$1
   if [ $(dpkg-query -W -f='${Status}' $PACKAGE 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
     log "[install_$PACKAGE] installing $PACKAGE"
