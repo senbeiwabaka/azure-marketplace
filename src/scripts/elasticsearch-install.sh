@@ -1089,6 +1089,7 @@ configure_elasticsearch_yaml()
 
         local SKIP_LINES="cluster.name node.name path.data discovery.zen.ping.unicast.hosts "
         SKIP_LINES+="node.master node.data discovery.zen.minimum_master_nodes network.host "
+        SKIP_LINES+="discovery.seed_hosts cluster.initial_master_nodes " 
         SKIP_LINES+="discovery.zen.ping.multicast.enabled marvel.agent.enabled "
         SKIP_LINES+="node.max_local_storage_nodes plugin.mandatory cloud.azure.storage.default.account "
         SKIP_LINES+="cloud.azure.storage.default.key azure.client.default.endpoint_suffix xpack.security.authc "

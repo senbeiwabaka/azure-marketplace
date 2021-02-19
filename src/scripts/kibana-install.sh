@@ -425,7 +425,7 @@ configure_kibana_yaml()
         local SKIP_LINES="elasticsearch.username elasticsearch.password "
         SKIP_LINES+="server.ssl.key server.ssl.cert server.ssl.enabled "
         SKIP_LINES+="xpack.security.encryptionKey xpack.reporting.encryptionKey "
-        SKIP_LINES+="elasticsearch.url logging.dest logging.silent "
+        SKIP_LINES+="elasticsearch.url server.host logging.dest logging.silent "
         SKIP_LINES+="elasticsearch.ssl.certificate elasticsearch.ssl.key elasticsearch.ssl.certificateAuthorities "
         SKIP_LINES+="elasticsearch.ssl.ca elasticsearch.ssl.keyPassphrase elasticsearch.ssl.verify "
         SKIP_LINES+="xpack.security.authProviders server.xsrf.whitelist "
