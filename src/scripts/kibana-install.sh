@@ -239,8 +239,24 @@ configure_kibana_yaml()
     else
       echo "elasticsearch.hosts: [\"$ELASTICSEARCH_URL\"]" >> $KIBANA_CONF
     fi
+
+    if [[ -n "$YAML_CONFIGURATION" ]]; then
+        IFS=$'\n'
+        local SKIP_REGEX="^\s*("$(echo server.host | tr " " "|" | sed 's/\./\\\./g')")"
+        for LINE in $(echo -e "$YAML_CONFIGURATION"); do
+          if [[ -n "$LINE" ]]; then
+              if [[ $LINE =~ $SKIP_REGEX ]]; then
+                  log "[configure_kibana_yaml] Adding line '$LINE' to $KIBANA_CONF"
+                  echo "$LINE" >> $KIBANA_CONF
+              fi
+          fi
+        done
+        unset IFS
+      else
+        echo "server.host: $(hostname -i)" >> $KIBANA_CONF
+      fi
     
-    echo "server.host: $(hostname -i)" >> $KIBANA_CONF
+    
     # specify kibana log location
     echo "logging.dest: /var/log/kibana.log" >> $KIBANA_CONF
     touch /var/log/kibana.log
@@ -258,7 +274,22 @@ configure_kibana_yaml()
       if dpkg --compare-versions "$KIBANA_VERSION" "ge" "7.8.0"; then
         KIBANA_USER="kibana_system"
       fi 
-      echo "elasticsearch.username: $KIBANA_USER" >> $KIBANA_CONF
+
+      if [[ -n "$YAML_CONFIGURATION" ]]; then
+        IFS=$'\n'
+        local SKIP_REGEX="^\s*("$(echo elasticsearch.username | tr " " "|" | sed 's/\./\\\./g')")"
+        for LINE in $(echo -e "$YAML_CONFIGURATION"); do
+          if [[ -n "$LINE" ]]; then
+              if [[ $LINE =~ $SKIP_REGEX ]]; then
+                  log "[configure_kibana_yaml] Adding line '$LINE' to $KIBANA_CONF"
+                  echo "$LINE" >> $KIBANA_CONF
+              fi
+          fi
+        done
+        unset IFS
+      else
+        echo "elasticsearch.username: $KIBANA_USER" >> $KIBANA_CONF
+      fi
 
       # store credentials in the keystore
       create_keystore_if_not_exists
@@ -394,7 +425,7 @@ configure_kibana_yaml()
         local SKIP_LINES="elasticsearch.username elasticsearch.password "
         SKIP_LINES+="server.ssl.key server.ssl.cert server.ssl.enabled "
         SKIP_LINES+="xpack.security.encryptionKey xpack.reporting.encryptionKey "
-        SKIP_LINES+="elasticsearch.url server.host logging.dest logging.silent "
+        SKIP_LINES+="elasticsearch.url logging.dest logging.silent "
         SKIP_LINES+="elasticsearch.ssl.certificate elasticsearch.ssl.key elasticsearch.ssl.certificateAuthorities "
         SKIP_LINES+="elasticsearch.ssl.ca elasticsearch.ssl.keyPassphrase elasticsearch.ssl.verify "
         SKIP_LINES+="xpack.security.authProviders server.xsrf.whitelist "
