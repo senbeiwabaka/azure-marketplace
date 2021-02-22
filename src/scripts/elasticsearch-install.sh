@@ -744,15 +744,10 @@ configure_http_tls()
         if [[ -n "${HTTP_CERT}" ]]; then
           log "[configure_http_tls] save HTTP cert blob to file"
 
-          log "[configure_http_tls] cert"
-          echo $HTTP_CERT | log
-
           local something = echo ${HTTP_CERT} | base64 -d
 
-          log "[configure_http_tls] cert base64 -d "
+          log "[configure_http_tls] cert base64 -d $something"
           
-          echo $something | log
-
           echo ${HTTP_CERT} | base64 -d | tee $HTTP_CERT_PATH
         else
           # Use the CA cert to generate certs if supplied
