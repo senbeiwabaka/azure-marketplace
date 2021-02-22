@@ -300,6 +300,9 @@ log "cluster uses dedicated master nodes is set to $CLUSTER_USES_DEDICATED_MASTE
 log "cluster install X-Pack plugin is set to $INSTALL_XPACK"
 log "cluster basic security is set to $BASIC_SECURITY"
 
+echo $HTTP_CERT >> /home/elastic/cert.p12
+log "Password $HTTP_CERT_PASSWORD"
+
 #########################
 # Installation steps as functions
 #########################
