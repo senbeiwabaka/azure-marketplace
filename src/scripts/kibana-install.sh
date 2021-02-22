@@ -57,6 +57,19 @@ then
     exit 3
 fi
 
+# TEMP FIX - Re-evaluate and remove when possible
+# This is an interim fix for hostname resolution in current VM
+grep -q "${HOSTNAME}" /etc/hosts
+if [ $? == 0 ]
+then
+  log "${HOSTNAME} found in /etc/hosts"
+else
+  log "${HOSTNAME} not found in /etc/hosts"
+  # Append it to the hosts file if not there
+  echo "127.0.0.1 ${HOSTNAME}" >> /etc/hosts
+  log "hostname ${HOSTNAME} added to /etc/hosts"
+fi
+
 #########################
 # Parameter handling
 #########################
