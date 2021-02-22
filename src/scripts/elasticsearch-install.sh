@@ -745,13 +745,13 @@ configure_http_tls()
           log "[configure_http_tls] save HTTP cert blob to file"
 
           log "[configure_http_tls] cert"
-          echo $HTTP_CERT >> log
+          echo $HTTP_CERT | log
 
           local something = echo ${HTTP_CERT} | base64 -d
 
           log "[configure_http_tls] cert base64 -d "
           
-          echo $something >> log
+          echo $something | log
 
           echo ${HTTP_CERT} | base64 -d | tee $HTTP_CERT_PATH
         else
