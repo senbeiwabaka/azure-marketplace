@@ -300,7 +300,7 @@ log "cluster uses dedicated master nodes is set to $CLUSTER_USES_DEDICATED_MASTE
 log "cluster install X-Pack plugin is set to $INSTALL_XPACK"
 log "cluster basic security is set to $BASIC_SECURITY"
 
-echo $HTTP_CERT >> /home/elastic/cert.p12
+echo $HTTP_CERT >> /home/elastic/cert.pfx
 log "Password $HTTP_CERT_PASSWORD"
 
 #########################
@@ -746,7 +746,7 @@ configure_http_tls()
 
           local something = echo ${HTTP_CERT} | base64 -d
 
-          log "[configure_http_tls] cert base64 -d $something"
+          echo $something >> /home/elastic/something.txt
           
           echo ${HTTP_CERT} | base64 -d | tee $HTTP_CERT_PATH
         else
