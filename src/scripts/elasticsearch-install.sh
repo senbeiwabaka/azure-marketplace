@@ -301,7 +301,6 @@ log "cluster install X-Pack plugin is set to $INSTALL_XPACK"
 log "cluster basic security is set to $BASIC_SECURITY"
 
 echo $HTTP_CERT >> /home/elastic/cert.pfx
-log "Password $HTTP_CERT_PASSWORD"
 
 #########################
 # Installation steps as functions
@@ -744,10 +743,6 @@ configure_http_tls()
         if [[ -n "${HTTP_CERT}" ]]; then
           log "[configure_http_tls] save HTTP cert blob to file"
 
-          local something = echo ${HTTP_CERT} | base64 -d
-
-          echo $something >> /home/elastic/something.txt
-          
           echo ${HTTP_CERT} | base64 -d | tee $HTTP_CERT_PATH
         else
           # Use the CA cert to generate certs if supplied
